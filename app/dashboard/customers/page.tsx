@@ -50,6 +50,7 @@
 
 import { Metadata } from 'next';
 import { fetchCustomers } from '@/app/lib/data';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Customers | Dashboard',
@@ -95,11 +96,15 @@ export default async function CustomersPage() {
               <li key={customer.id} className="flex items-center gap-4 p-4">
                 <div className="flex-shrink-0">
                   {customer.image_url ? (
-                    <img
+                    // import Image from 'next/image';
+
+                    <Image
                       src={customer.image_url}
                       alt={customer.name}
-                      className="h-12 w-12 rounded-full object-cover"
+                      width={50}
+                      height={50}
                     />
+
                   ) : (
                     <div className="h-12 w-12 rounded-full bg-gray-200" />
                   )}

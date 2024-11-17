@@ -64,7 +64,7 @@ try {
     INSERT INTO invoices (customer_id, amount, status, date)
     VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
   `;
-}catch(error){
+}catch{
   return {
     message: 'Database Error:Failed to create Invoice'
   }
@@ -101,7 +101,7 @@ export async function updateInvoice(id: string,prevState: State, formData: FormD
     SET customer_id = ${customerId}, amount = ${amountInCents}, status = ${status}
     WHERE id = ${id}
   `;
-}catch(error){
+}catch{
   return {
     message: 'Database Error:Failed to update Invoice'
   }
@@ -116,7 +116,7 @@ export async function deleteInvoice(id: string) {
   await sql`DELETE FROM invoices WHERE id = ${id}`;
   expirePath('/dashboard/invoices');
   return{message: 'Invoice deleted.'}
-}catch(error){
+}catch{
   return {
     message: 'Database Error:Failed to delete Invoice'
   }
@@ -126,7 +126,7 @@ export async function deleteInvoice(id: string) {
 
  
 export async function authenticate(
-  prevState: string | undefined,
+  // prevState: string | undefined,
   formData: FormData,
 ) {
   try {
