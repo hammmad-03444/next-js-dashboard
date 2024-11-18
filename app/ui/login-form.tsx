@@ -10,9 +10,17 @@ import {
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button } from './button';
 
+const wrappedAuthenticate = async (
+  state: string | undefined,
+  formData: FormData
+): Promise<string | undefined> => {
+  return authenticate(formData);
+};
+
 export default function LoginForm() {
+  
   const [errorMessage, formAction, isPending] = useActionState(
-    authenticate,
+    wrappedAuthenticate,
     undefined,
   );
   return (
